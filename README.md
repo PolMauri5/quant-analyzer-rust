@@ -9,7 +9,7 @@ Actualmente soporta:
 
 ---
 
-## Estructura del proyecto
+##  Estructura del proyecto
 ```
 src/
  ├── main.rs      # Punto de entrada, orquesta la lectura de datos y cálculos
@@ -40,7 +40,7 @@ Date,Open,High,Low,Close,Volume
 Clona el repositorio y ejecuta con:
 
 ```bash
-git clone https://github.com/PolMauri5/quant-analyzer-rust.git
+git clone https://github.com/tuusuario/quant-analyzer-rust.git
 cd quant-analyzer-rust
 cargo run
 ```
@@ -48,7 +48,7 @@ cargo run
 ---
 
 ## Ejemplo de salida
-Con datos de prueba (`prices.csv`):
+Con datos reales de Apple (últimos 5 años):
 
 ```
 Quant analizer
@@ -58,5 +58,46 @@ Shape ratio: 0.66
 
 ---
 
-## 📜 Licencia
-MIT License. Libre para usar, modificar y aprender.
+## ¿Qué significan estos valores?
+
+### Volatilidad anualizada
+Mide cuánto varían los retornos alrededor de su media, es decir, el **riesgo** o la **incertidumbre** de la inversión.
+
+Fórmula de la varianza muestral diaria:
+\[
+\sigma^2 = rac{1}{N-1} \sum_{t=1}^N (r_t - ar{r})^2
+\]
+
+Volatilidad diaria:
+\[
+\sigma_{daily} = \sqrt{\sigma^2}
+\]
+
+Volatilidad anualizada (suponiendo 252 días de trading):
+\[
+\sigma_{annual} = \sigma_{daily} 	imes \sqrt{252}
+\]
+
+---
+
+### Sharpe ratio
+Mide la **rentabilidad ajustada al riesgo**: cuánto retorno adicional obtiene una inversión por cada unidad de riesgo asumido.
+
+\[
+Sharpe = rac{E[R] - R_f}{\sigma}
+\]
+
+- \(E[R]\) = retorno medio anualizado de la inversión.  
+- \(R_f\) = tasa libre de riesgo (en este programa asumida como 0).  
+- \(\sigma\) = volatilidad anualizada.  
+
+Interpretación práctica:
+- **Sharpe < 1** → riesgo demasiado alto para el retorno.  
+- **1 – 2** → aceptable.  
+- **2 – 3** → muy bueno.  
+- **> 3** → excelente (muy raro en mercados reales).  
+
+---
+
+## Licencia
+MIT License. Libre para usar, modificar y aprender 🚀.

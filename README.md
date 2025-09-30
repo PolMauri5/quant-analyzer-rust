@@ -40,7 +40,7 @@ Date,Open,High,Low,Close,Volume
 Clona el repositorio y ejecuta con:
 
 ```bash
-git clone https://github.com/tuusuario/quant-analyzer-rust.git
+git clone https://github.com/PolMauri5/quant-analyzer-rust.git
 cd quant-analyzer-rust
 cargo run
 ```

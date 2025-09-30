@@ -63,39 +63,31 @@ Shape ratio: 0.66
 ### Volatilidad anualizada
 Mide cuánto varían los retornos alrededor de su media, es decir, el **riesgo** o la **incertidumbre** de la inversión.
 
-Fórmula de la varianza muestral diaria:
-\[
-\sigma^2 = rac{1}{N-1} \sum_{t=1}^N (r_t - ar{r})^2
-\]
+Fórmula de la varianza muestral diaria:  
+![Varianza](https://latex.codecogs.com/png.latex?\bg_white\sigma^2%20=%20\frac{1}{N-1}%20\sum_{t=1}^N(r_t-\bar{r})^2)
 
-Volatilidad diaria:
-\[
-\sigma_{daily} = \sqrt{\sigma^2}
-\]
+Volatilidad diaria:  
+![VolDaily](https://latex.codecogs.com/png.latex?\bg_white\sigma_{daily}%20=%20\sqrt{\sigma^2})
 
-Volatilidad anualizada (suponiendo 252 días de trading):
-\[
-\sigma_{annual} = \sigma_{daily} 	imes \sqrt{252}
-\]
+Volatilidad anualizada (suponiendo 252 días de trading):  
+![VolAnnual](https://latex.codecogs.com/png.latex?\bg_white\sigma_{annual}%20=%20\sigma_{daily}%20\times%20\sqrt{252})
 
 ---
 
 ### Sharpe ratio
 Mide la **rentabilidad ajustada al riesgo**: cuánto retorno adicional obtiene una inversión por cada unidad de riesgo asumido.
 
-\[
-Sharpe = rac{E[R] - R_f}{\sigma}
-\]
+![Sharpe](https://latex.codecogs.com/png.latex?\bg_white%20Sharpe%20=%20\frac{E[R]-%20R_f}{\sigma})
 
-- \(E[R]\) = retorno medio anualizado de la inversión.  
-- \(R_f\) = tasa libre de riesgo (en este programa asumida como 0).  
-- \(\sigma\) = volatilidad anualizada.  
+- **E[R]** = retorno medio anualizado de la inversión.  
+- **Rf** = tasa libre de riesgo (en este programa asumida como 0).  
+- **σ** = volatilidad anualizada.  
 
 Interpretación práctica:
 - **Sharpe < 1** → riesgo demasiado alto para el retorno.  
 - **1 – 2** → aceptable.  
 - **2 – 3** → muy bueno.  
-- **> 3** → excelente (muy raro en mercados reales).  
+- **> 3** → excelente (muy raro en mercados reales).   
 
 ---
 

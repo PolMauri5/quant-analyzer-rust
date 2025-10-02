@@ -6,8 +6,14 @@ use csv::ReaderBuilder;
 #[allow(dead_code)]
 #[derive(Debug)]
 pub struct PriceData {
-    pub date: NaiveDate,
-    pub close: f64,
+    pub fecha: NaiveDate,
+    pub apertura: f64,
+    pub cierre: f64,
+}
+
+fn parse_number(s: &str) -> Result<f64, Box<dyn Error>> {
+    let normalized = s.replace(".", "").replace(",", ".");
+    Ok(normalized.parse::<f64>()?)
 }
 
 // Error es un trait object ya que pueden ser distintos errores
@@ -22,10 +28,11 @@ pub fn read_prices(path: &str) -> Result<Vec<PriceData>, Box<dyn Error>> {
 
     for result in rdr.records() {
         let record = result?;
-        let date = NaiveDate::parse_from_str(&record[0], "%Y-%m-%d")?;
-        let close: f64 = record[4].parse()?; // columna "Close"
-        prices.push(PriceData { date, close });
+        let fecha = NaiveDate::parse_from_str(&record[0], "%d.%m.%Y")?;
+        let apertura = parse_number(&record[2])?;
+        let cierre   = parse_number(&record[1])?;
+        prices.push(PriceData { fecha, apertura, cierre });
     }
-
+    prices.sort_by_key(|p| p.fecha);
     Ok(prices)
 }
